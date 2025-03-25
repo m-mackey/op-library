@@ -1,2 +1,2 @@
-# op-library
-Odin Project library project
+# Odin Project - Library
+Small library application for tracking books and Read status. 
