@@ -19,13 +19,13 @@ function addBookToLibrary(title, author) {
   myLibrary.push(bookToAdd);
 }
 
-const libTable = document.querySelector('.lib-table');
+const libTableBody = document.querySelector('.lib-table-body');
 //might want to rewrite this so that *if* a new book gets added, then it adds just the new book instead of going through the
 //entire array again. just like picking the last array entry and tacking it on
 //otherwise it will just add the whole list again every time it's called
 function displayBooks(arr) {
   for (let i = 0; i < arr.length; i++) {
-    libTable.insertAdjacentHTML(
+    libTableBody.insertAdjacentHTML(
       'beforeend',
       `<tr>
           <th scope="row">${arr[i].title}</th>
