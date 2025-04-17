@@ -20,6 +20,16 @@ function addBookToLibrary(title, author) {
   displayNewBook(myLibrary.at(-1));
 }
 
+const bookTitle = document.querySelector('#title');
+const bookAuthor = document.querySelector('#author');
+const submitBtn = document.querySelector('#submit');
+
+submitBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  addBookToLibrary(bookTitle.value, bookAuthor.value);
+})
+
+
 const libTableBody = document.querySelector('.lib-table-body');
 //might want to rewrite this so that *if* a new book gets added, then it adds just the new book instead of going through the
 //entire array again. just like picking the last array entry and tacking it on
@@ -36,6 +46,7 @@ function displayBooks(arr) {
     )
   }
 }
+
 
 function displayNewBook(book){ //will want to rename later probably. this or the other one 
   libTableBody.insertAdjacentHTML(
