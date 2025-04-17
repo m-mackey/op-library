@@ -31,10 +31,7 @@ submitBtn.addEventListener('click', (e) => {
 
 
 const libTableBody = document.querySelector('.lib-table-body');
-//might want to rewrite this so that *if* a new book gets added, then it adds just the new book instead of going through the
-//entire array again. just like picking the last array entry and tacking it on
-//otherwise it will just add the whole list again every time it's called
-//this can be used to display what's already in the array onload though
+
 function displayBooks(arr) {
   for (let i = 0; i < arr.length; i++) {
     libTableBody.insertAdjacentHTML(
@@ -47,6 +44,10 @@ function displayBooks(arr) {
   }
 }
 
+//display books already in library on page load
+window.onload = () => {
+  displayBooks(myLibrary);
+}
 
 function displayNewBook(book){ //will want to rename later probably. this or the other one 
   libTableBody.insertAdjacentHTML(
