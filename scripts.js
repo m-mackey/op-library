@@ -53,7 +53,7 @@ window.onload = () => {
 function displayNewBook(book){ //will want to rename later probably. this or the other one 
   libTableBody.insertAdjacentHTML(
     'beforeend',
-    `<tr>
+    `<tr data-book-id="${book.id}">
         <th scope="row">${book.title}</th>
         <td>${book.author}</td>
      </tr>`
