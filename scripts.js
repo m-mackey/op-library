@@ -1,33 +1,35 @@
 const myLibrary = [
-  {title: 'Gilgamesh', author: 'unknown'},
-  {title: 'waiting for godot', author: 'samuel beckett'},
-  {title: 'tomie', author: 'junji ito'},
+  {title: 'Gilgamesh', author: 'unknown', pages: 50},
+  {title: 'waiting for godot', author: 'samuel beckett', pages: 100},
+  {title: 'tomie', author: 'junji ito', pages: 125},
 ];
 
-function Book(title, author) {
+function Book(title, author, pages) {
   // the constructor...
   if (!new.target) {
     throw Error('Must use "new" to call Book constructor');
   }
   this.title = title;
   this.author = author;
+  this.pages = pages;
   this.id = crypto.randomUUID();
 }
 
-function addBookToLibrary(title, author) {
+function addBookToLibrary(title, author, pages) {
   // take params, create a book then store it in the array
-  const bookToAdd = new Book(title, author);
+  const bookToAdd = new Book(title, author, pages);
   myLibrary.push(bookToAdd);
   displayNewBook(myLibrary.at(-1));
 }
 
 const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
+const bookPages = document.querySelector('#pages');
 const submitBtn = document.querySelector('#submit');
 
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  addBookToLibrary(bookTitle.value, bookAuthor.value);
+  addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value);
 })
 
 
@@ -40,6 +42,7 @@ function displayBooks(arr) {
       `<tr>
           <th scope="row">${arr[i].title}</th>
           <td>${arr[i].author}</td>
+          <td>${arr[i].pages}</td>
        </tr>`
     )
   }
@@ -56,6 +59,7 @@ function displayNewBook(book){ //will want to rename later probably. this or the
     `<tr data-book-id="${book.id}">
         <th scope="row">${book.title}</th>
         <td>${book.author}</td>
+        <td>${book.pages}</td>
      </tr>`
   )
 }
