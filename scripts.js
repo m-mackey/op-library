@@ -17,9 +17,12 @@ function Book(title, author, pages) {
 
 function addBookToLibrary(title, author, pages) {
   // take params, create a book then store it in the array
-  const bookToAdd = new Book(title, author, pages);
-  myLibrary.push(bookToAdd);
+  myLibrary.push(new Book(title, author, pages));
   displayNewBook(myLibrary.at(-1));
+}
+
+Book.prototype.toggleReadStatus = function () {
+  return 'worked';
 }
 
 const bookTitle = document.querySelector('#title');
