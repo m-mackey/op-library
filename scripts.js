@@ -4,7 +4,7 @@ const myLibrary = [
   {title: 'tomie', author: 'junji ito', pages: 125},
 ];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, status) {
   // the constructor...
   if (!new.target) {
     throw Error('Must use "new" to call Book constructor');
@@ -12,6 +12,7 @@ function Book(title, author, pages) {
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.status = status;
   this.id = crypto.randomUUID();
 }
 
@@ -22,7 +23,7 @@ function addBookToLibrary(title, author, pages) {
 }
 
 Book.prototype.toggleReadStatus = function () {
-  return 'worked';
+  return 'worked'; 
 }
 
 const bookTitle = document.querySelector('#title');
@@ -63,6 +64,8 @@ function displayNewBook(book){ //will want to rename later probably. this or the
         <th scope="row">${book.title}</th>
         <td>${book.author}</td>
         <td>${book.pages}</td>
+        <td></td>
+        <td><button class="remove-btn">Remove</button><td>
      </tr>`
   )
 }

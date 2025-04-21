@@ -23,7 +23,15 @@
                 <label for="Pages">Pages</label>
                 <input type="number" name="pages" id="pages">
 
-                <!-- checkbox for read status? -->
+                <fieldset>
+                    <legend>Read Status</legend>
+                    <div>
+                        <input type="radio" id="read" name="read-status" value="read">
+                        <label for="read">Read</label>
+                        <input type="radio" id="unread" name="read-status" value="unread">
+                        <label for="unread">Unread</label>
+                    </div>
+                </fieldset>
 
                 <button type="submit" id="submit">Submit</button>
             </form>
