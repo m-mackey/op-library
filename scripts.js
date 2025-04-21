@@ -16,9 +16,9 @@ function Book(title, author, pages, status) {
   this.id = crypto.randomUUID();
 }
 
-function addBookToLibrary(title, author, pages) {
+function addBookToLibrary(title, author, pages, status) {
   // take params, create a book then store it in the array
-  myLibrary.push(new Book(title, author, pages));
+  myLibrary.push(new Book(title, author, pages, status));
   displayNewBook(myLibrary.at(-1));
 }
 
@@ -26,14 +26,16 @@ Book.prototype.toggleReadStatus = function () {
   return 'worked'; 
 }
 
+const form = document.querySelector('form');
 const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
 const bookPages = document.querySelector('#pages');
+const readStatus = form.elements["read-status"];
 const submitBtn = document.querySelector('#submit');
 
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value);
+  addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, readStatus.value);
 })
 
 
@@ -64,7 +66,7 @@ function displayNewBook(book){ //will want to rename later probably. this or the
         <th scope="row">${book.title}</th>
         <td>${book.author}</td>
         <td>${book.pages}</td>
-        <td></td>
+        <td>${book.status}</td>
         <td><button class="remove-btn">Remove</button><td>
      </tr>`
   )
