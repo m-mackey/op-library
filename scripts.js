@@ -65,7 +65,7 @@ function displayNewBook(book){ //will want to rename later probably. this or the
         <td>${book.author}</td>
         <td>${book.pages}</td>
         <td><button class="read-status-btn">${book.status}</button></td>
-        <td><button class="remove-btn" data-book-id="${book.id}">Remove</button><td>
+        <td><button class="remove-btn" data-book-id="${book.id}">Remove</button></td>
      </tr>`
   )
 }
@@ -86,9 +86,11 @@ function toggleReadStatus(e){  //event delegation? < add to 'what i learned'
 
 function removeBook(e) {
   if(e.target.classList.contains('remove-btn')) {
-    //could add book id to variable so its a little easier to read
-    const findRow = document.querySelector(`tr[data-book-id='${e.target.dataset.bookId}']`);
-    findRow.remove();
-    //also need to remove from lib arr
+    //remove book from display
+    const targetBookId = e.target.dataset.bookId;
+    const targetBookRow = document.querySelector(`tr[data-book-id='${targetBookId}']`);
+    targetBookRow.remove();
+    //remove book from library array
+    myLibrary.splice(myLibrary.indexOf(myLibrary.find((book) => book.id === targetBookId)), 1);
   }
 }
