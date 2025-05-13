@@ -64,24 +64,33 @@ function displayNewBook(book){ //will want to rename later probably. this or the
         <th scope="row">${book.title}</th>
         <td>${book.author}</td>
         <td>${book.pages}</td>
-        <td><button class="read-status-btn">${book.status}</button></td>
+        <td><button class="read-status-btn" data-book-id="${book.id}">${book.status}</button></td>
         <td><button class="remove-btn" data-book-id="${book.id}">Remove</button></td>
      </tr>`
   )
 }
 
-// Book.prototype.toggleReadStatus = function () {
-//   console.log('worked'); 
-// }
+Book.prototype.toggleReadStatus = function () {
+  if (this.status === 'read') {
+    this.status = 'unread';
+  } else {
+    this.status = 'read';
+  }
+}
 
 libTableBody.addEventListener('click', removeBook); 
-libTableBody.addEventListener('click', toggleReadStatus); 
+libTableBody.addEventListener('click', triggerReadStatus); 
 
-function toggleReadStatus(e){  //event delegation? < add to 'what i learned'
-  if (e.target.classList.contains('read-status-btn')) { //might be better to target btn first then class?
-    console.log('read status button');
-    //call prototype fn here
+function triggerReadStatus(e){  //event delegation? < add to 'what i learned'
+  if (e.target.classList.contains('read-status-btn')) {
+    const targetBookId = e.target.dataset.bookId;
+    const currentBook = myLibrary.find((book) => book.id === targetBookId);
+    //call prototype fn
+    currentBook.toggleReadStatus();
+    //update btn text
+    e.target.textContent = currentBook.status;
   } 
+  
 }
 
 function removeBook(e) {
