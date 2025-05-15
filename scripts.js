@@ -34,6 +34,7 @@ const submitBtn = document.querySelector('#submit');
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
   addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, readStatus.value);
+  dialog.close();
 })
 
 
@@ -103,3 +104,17 @@ function removeBook(e) {
     myLibrary.splice(myLibrary.indexOf(myLibrary.find((book) => book.id === targetBookId)), 1);
   }
 }
+
+//dialog
+
+const dialog = document.querySelector('dialog');
+const openDialogBtn = document.querySelector('.open-dialog');
+const closeFormBtn = document.querySelector('.close-form-dialog');
+
+openDialogBtn.addEventListener('click', () => {
+  dialog.showModal();
+} )
+
+closeFormBtn.addEventListener('click', () => {
+  dialog.close();
+})
