@@ -32,9 +32,11 @@ const readStatus = form.elements["read-status"];
 const submitBtn = document.querySelector('#submit');
 
 submitBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, readStatus.value);
-  dialog.close();
+  if(bookTitle.value && readStatus.value) {
+    e.preventDefault();
+    addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, readStatus.value);
+    dialog.close();
+  }
 })
 
 
