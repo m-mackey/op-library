@@ -23,15 +23,16 @@ function addBookToLibrary(title, author, pages, status) {
 }
 
 
-
-const form = document.querySelector('form');
-const bookTitle = document.querySelector('#title');
-const bookAuthor = document.querySelector('#author');
-const bookPages = document.querySelector('#pages');
-const readStatus = form.elements["read-status"];
+//on form submit
 const submitBtn = document.querySelector('#submit');
 
 submitBtn.addEventListener('click', (e) => {
+  const form = document.querySelector('form');
+  const bookTitle = document.querySelector('#title');
+  const bookAuthor = document.querySelector('#author');
+  const bookPages = document.querySelector('#pages');
+  const readStatus = form.elements["read-status"];
+
   if(bookTitle.value && readStatus.value) {
     e.preventDefault();
     addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, readStatus.value);
