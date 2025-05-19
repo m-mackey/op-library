@@ -36,6 +36,7 @@ submitBtn.addEventListener('click', (e) => {
   if(bookTitle.value && readStatus.value) {
     e.preventDefault();
     addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, readStatus.value);
+    form.reset();
     dialog.close();
   }
 })
