@@ -38,7 +38,7 @@ submitBtn.addEventListener('click', (e) => {
 
 const libTableBody = document.querySelector('.lib-table-body');
 
-function displayNewBook(book){ //will want to rename later probably. this or the other one 
+function displayNewBook(book){ 
   libTableBody.insertAdjacentHTML(
     'beforeend',
     `<tr data-book-id="${book.id}">
@@ -62,7 +62,7 @@ Book.prototype.toggleReadStatus = function () {
 libTableBody.addEventListener('click', removeBook); 
 libTableBody.addEventListener('click', triggerReadStatus); 
 
-function triggerReadStatus(e){  //event delegation? < add to 'what i learned'
+function triggerReadStatus(e){ 
   if (e.target.classList.contains('read-status-btn')) {
     const targetBookId = e.target.dataset.bookId;
     const currentBook = myLibrary.find((book) => book.id === targetBookId);
