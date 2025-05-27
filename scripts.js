@@ -1,8 +1,4 @@
-const myLibrary = [
-  {title: 'Gilgamesh', author: 'unknown', pages: 50},
-  {title: 'waiting for godot', author: 'samuel beckett', pages: 100},
-  {title: 'tomie', author: 'junji ito', pages: 125},
-];
+const myLibrary = [];
 
 function Book(title, author, pages, status) {
   // the constructor...
@@ -22,7 +18,6 @@ function addBookToLibrary(title, author, pages, status) {
   displayNewBook(myLibrary.at(-1));
 }
 
-
 //on form submit
 const submitBtn = document.querySelector('#submit');
 
@@ -41,26 +36,7 @@ submitBtn.addEventListener('click', (e) => {
   }
 })
 
-
 const libTableBody = document.querySelector('.lib-table-body');
-
-function displayBooks(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    libTableBody.insertAdjacentHTML(
-      'beforeend',
-      `<tr>
-          <th scope="row">${arr[i].title}</th>
-          <td>${arr[i].author}</td>
-          <td>${arr[i].pages}</td>
-       </tr>`
-    )
-  }
-}
-
-//display books already in library on page load
-window.onload = () => {
-  displayBooks(myLibrary);
-}
 
 function displayNewBook(book){ //will want to rename later probably. this or the other one 
   libTableBody.insertAdjacentHTML(
